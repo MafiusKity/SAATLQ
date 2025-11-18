@@ -1,0 +1,266 @@
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+%\usepackage[simplified]{pgf-umlcd}
+\usepackage{graphicx}
+\usepackage{hyperref}
+%\usepackage{qrcode}
+
+\title{Aplicação do Padrão de Projeto Facade para Implementação de um Software Auxiliar de Atividades Técnicas em Laboratórios de Química}
+\author{Caio Cardoso S. G. Souza - 11814871}
+
+\begin{document}
+  \begin{frame}
+   \titlepage
+  \end{frame}
+%\begin{comment}
+  \begin{frame}
+    \frametitle{Sumário}
+    \tableofcontents
+  \end{frame}
+  
+  \begin{frame}
+    \section{Padrão Facade}
+      \frametitle{Padrão Facade}
+      \subsection{Intenção e objetivo}
+      \framesubtitle{Intenção e objetivo}
+        \begin{itemize}
+          \item Fornecer uma interface unificada para o acesso das funcionalidades de um ou mais subsistemas... \textbf{NÃO CONFUNDIR COM INTERFACE DO JAVA}
+        \end{itemize}
+  \end{frame}
+%\end{comment}
+%\begin{comment}  
+  \begin{frame}
+    \frametitle{Padrão Facade}
+    \subsection{Motivação}
+    \framesubtitle{Motivação}
+    \begin{itemize}
+      \item Complexidade em sistemas grandes e/ou com diversos subsistemas
+      \item Diminuir nível de dificuldade para o usuário para esses sistemas
+    \end{itemize}
+  \end{frame}
+%\end{comment}
+%\begin{comment}
+  \begin{frame}
+    \frametitle{Padrão Facade}
+    \subsection{Aplicações}
+    \framesubtitle{Aplicações}
+    É recomendado o padrão Facade nas seugintes ocasiões:
+    \begin{itemize}
+      \item Fornecer uma interface simples para um sibsistema complexo;
+      \item Existem muitas dependências entre os clientes e as classes de implementação de uma abstração;
+      \item Organizar os subsistemas em camadas, onde cada fachada define o ponto de entrada dos subsistemas;
+    \end{itemize}  
+  \end{frame}
+%\end{comment}
+
+  \begin{frame}
+    \frametitle{Padrão Facade}
+    \subsection{Estrutura}
+    \framesubtitle{Estrutura}
+    \begin{columns}
+      \begin{column}{.5\textwidth}
+        Fachada:
+        \begin{itemize}
+          \item A fachada sabe quais classes do subsistema são responsáveis por determinadas tarefas
+          \item Delega as requisições a essas classes
+        \end{itemize}
+      \end{column}
+      \begin{column}{.5\textwidth}
+        Classes do subsistema:
+        \begin{itemize}
+          \item Compõem o subsistema em si
+          \item Não possuem conhecimento da fachada
+          \item Executam as tarefas requisitadas
+        \end{itemize}
+      \end{column}
+    \end{columns}
+  \end{frame}
+  
+  \begin{frame}
+    \subsection{Consequêcias}
+    \framesubtitle{Consequências}
+    \begin{itemize}
+        \item Isolamento e facilidade de uso, protegendo os clientes das componentes do subsistema e reduzindo o número de objetos
+        \item Acoplamento fraco do código entre os subsistemas e seus clientes, permitindo que as componentes do subsistema variem sem afetar os clientes
+        \item Estruturas em camadas, ajudando a organizar o sistema e eliminando dependências complexas ou circulares
+    \end{itemize}
+    \frametitle{Padrão Facade}
+  \end{frame}
+    
+    \begin{frame}
+      \frametitle{Padrão Facade}
+      \framesubtitle{Consequências}
+      \begin{itemize}
+        \item Minimiza a necessidade de recompilação quando as classes dos subsistemas mudam
+        \item A fachada não impede que as aplicações usem classes do subsistema diretamente se precisarem, permitindo que ao aplicar esse padrão o projeto possa se adaptar entre facilidade pela fachada e generalidade por meio do acesso direto
+      \end{itemize}
+  \end{frame}
+  
+  \begin{frame}
+    \subsection{Implementação}
+    \framesubtitle{Implementação}
+    Para a implementação do padrão Facade é recomendado:
+    \frametitle{Padrão Facade}
+    \begin{itemize}
+      \item Usar uma classe abstrata como fachada de tal forma que suas classes filhas sejam diferentes implementações do subsistema, reduzindo mais o acoplamento
+      \item Costomizar uma fachada com elementos do subsistema, tornando o código mais versátil
+    \end{itemize}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Padrão Facade}
+    \subsection{Exemplo}
+    \framesubtitle{Exemplo}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1\textwidth]{codexemple}
+    \end{figure}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Padrão Facade}
+    \subsection{Usos conhecidos}
+    \framesubtitle{Usos conhecidos}
+    \begin{itemize}
+      \item Sistema de compilador ObjectWorks para Smalltalk (exemplo)
+      \item Framework ET++
+      \item Choices OS
+    \end{itemize}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Padrão Facade}
+    \subsection{Padrões Relacionados}
+    \framesubtitle{Padrões Relacionados}
+    \begin{itemize}
+        \item Singleton
+        \item Abstract Factory
+        \item Mediator
+        \item Adapter
+    \end{itemize}
+  \end{frame}
+  
+  %%%PARTE 2%%%
+  \begin{frame}
+    \section{Aplicação do Facade}
+    \frametitle{Aplicação do Facade}
+    \framesubtitle{Objetivo da solução}
+    Fornecer um software capaz de auxiliar químicos em tarefas de desígnio técnico em um laboratório
+    \begin{center}
+      \textbf{QUE TAREFAS?}
+    \end{center}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aplicação do Facade}
+    \subtitle{Serviços}
+    \framesubtitle{Serviços}
+    \begin{itemize}
+      \item Adicionar ficha de resíduo
+      \item Remover ficha de resíduo
+      \item Consultar fichas de resíduo
+      \item Adicionar no estoque
+      \item Remover do estoque
+      \item Consultar estoque
+      \item Purgar bomba do HPLC
+      \item Ajustar preção da bomba do HPLC
+      \item Checar funcionamento do injetor do HPLC
+      \item Checar temperatura do forno do HPLC
+      \item Checar módulo central do HPLC
+      \item Calibrar detector A do HPLC
+      \item Calibrar detector B do HPLC
+    \end{itemize}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aplicação do Facade}
+    \framesubtitle{Serviços}
+    \begin{itemize}  
+      \item Calibrar pHmetro
+      \item Checar eletrodo do pHmetro
+      \item Checar temperatura do pHmetro
+      \item Troca de eletrólito do pHmetro
+      \item Calibração simples da balança
+      \item Calibração completa da balança
+      \item Filtrar água do Mili-q
+      \item Checar condutância do Mili-q
+      \item Checar nível do estoque do Mili-q
+      \item Limpeza do sistema Mili-q
+      \item Relatórios
+    \end{itemize}
+  \end{frame}
+  
+  \begin{frame}
+    \subsection{Modelagem}
+    \frametitle{Aplicação do Facade}
+    \framesubtitle{Modelagem: Diagrama de Comunicação}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1\textwidth]{rascunho}
+    \end{figure}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aplicação do Facade}
+    \framesubtitle{Modelagem: Diagrama de Comunicação}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.9\textwidth]{MDC}
+    \end{figure}
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Aplicação do Facade}
+    \framesubtitle{Modelagem: Diagrama de Classe}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.65\textwidth]{MDc}
+    \end{figure}
+  \end{frame}
+  
+  \begin{frame}
+    \subsection{Algoritmo}
+    \frametitle{Aplicação do Facade}
+    \framesubtitle{Algoritmo}
+    \begin{columns}
+      \begin{column}{.5\textwidth}
+        \begin{figure}
+          \centering
+          \includegraphics[width=1\textwidth]{A1}
+        \end{figure}
+      \end{column}
+      \begin{column}{.5\textwidth}
+        \begin{figure}
+          \centering
+          \includegraphics[width=1\textwidth]{A2}
+        \end{figure}
+      \end{column}
+    \end{columns}
+  \end{frame}
+  
+  \begin{frame}
+    \section{Referências e Links externos}
+    \frametitle{Referências e Links externos}
+    \begin{columns}
+      \begin{column}{.5\textwidth}
+        \textbf{Referências:}
+        \begin{itemize}
+          \item GAMMA, E. et al. \textbf{Design Patterns: Elements of Reusable Object-Oriented Software}. Boston: Addison-Wesley, 1994.
+          \item DR. EDWARD LAVIERI. \textbf{Hands-On Design Patterns With Java;Learn Design Patterns That Enable The Building Of Large-Scale Software Architectures}. S.L.: Packt Publishing, [s.d.]. 
+        \end{itemize}
+      \end{column}
+      \begin{column}{.5\textwidth}
+        Link para repositório do projeto no \href{https://github.com/MafiusKity/SAATLQ/tree/main}{\textit{GitHub}}
+        \begin{figure}
+          \centering
+          \includegraphics[width=1\textwidth]{qr}
+        \end{figure}
+      \end{column}
+    \end{columns}
+    \begin{center}
+      \textbf{OBRIGADO PELA ATENÇÃO!}
+    \end{center}
+  \end{frame}
+\end{document}
